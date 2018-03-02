@@ -1,0 +1,26 @@
+From 5008a48e7a5ffa492923f37559f248dfdff57b4d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert-Andr=C3=A9=20Mauchin?= <zebob.m@gmail.com>
+Date: Fri, 16 Feb 2018 18:00:56 +0100
+Subject: [PATCH] Move Appdata file installation to /usr/share/metainfo
+ according to the spec
+
+---
+ cmake/Installation.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/Installation.cmake b/cmake/Installation.cmake
+index a516ec01..eed76c6d 100644
+--- a/cmake/Installation.cmake
++++ b/cmake/Installation.cmake
+@@ -33,7 +33,7 @@ if(APPLE)
+   )
+ else()
+   install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "bin")
+-  install(FILES "res/qTox.appdata.xml" DESTINATION "share/appdata")
++  install(FILES "res/qTox.appdata.xml" DESTINATION "share/metainfo")
+   install(FILES "qtox.desktop" DESTINATION "share/applications")
+ 
+   # Install application icons according to the XDG spec
+-- 
+2.14.3
+
