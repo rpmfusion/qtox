@@ -1,6 +1,6 @@
 Name:       qtox
 Version:    1.13.0
-Release:    2%{?dist}
+Release:    3%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -90,6 +90,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/qTox.appd
 
 
 %changelog
+* Thu Mar 08 2018 RPM Fusion Release Engineering <leigh123linux@googlemail.com> - 1.13.0-3
+- Rebuilt for new ffmpeg snapshot
+
 * Fri Feb 16 2018 Robert-André Mauchin <zebob.m@gmail.com> 1.13.0-2
 - Spec file refresh
 - Move Appdata to metainfo
