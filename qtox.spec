@@ -1,5 +1,5 @@
 Name:       qtox
-Version:    1.14.1
+Version:    1.15.0
 Release:    1%{?dist}
 Summary:    Feature-rich Tox client
 
@@ -87,6 +87,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/qTox.appd
 
 
 %changelog
+* Thu Apr 19 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.15.0-1
+- Upstream release 1.15.0
+
 * Thu Apr 19 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.14.1-1
 - Upstream release 1.14.1
 
