@@ -1,6 +1,6 @@
 Name:       qtox
-Version:    1.13.0
-Release:    2%{?dist}
+Version:    1.14.1
+Release:    1%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -15,8 +15,6 @@ Source0:    %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:     qtox-1.11.0-remove_project_group.patch
 # Remove -Werror from compile flags
 Patch1:     qtox-1.12.1-disable_Werror.patch
-# https://github.com/qTox/qTox/issues/4958
-Patch2:     0001-Move-Appdata-file-installation-to-usr-share-metainfo.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
@@ -48,7 +46,6 @@ BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  qt5-linguist
 Requires:       hicolor-icon-theme
-
 
 %description
 qTox is a powerful Tox client that follows the Tox design 
@@ -90,6 +87,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/qTox.appd
 
 
 %changelog
+* Thu Apr 19 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.14.1-1
+- Upstream release 1.14.1
+
 * Fri Feb 16 2018 Robert-André Mauchin <zebob.m@gmail.com> 1.13.0-2
 - Spec file refresh
 - Move Appdata to metainfo
