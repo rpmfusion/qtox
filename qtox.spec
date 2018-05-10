@@ -1,6 +1,6 @@
 Name:       qtox
 Version:    1.15.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -23,7 +23,7 @@ BuildRequires:  libappstream-glib
 BuildRequires:  pkgconfig(Qt5)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  qtsingleapplication
-BuildRequires:  pkgconfig(libtoxcore)
+BuildRequires:  pkgconfig(toxcore)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(libqrencode)
@@ -87,6 +87,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/qTox.appd
 
 
 %changelog
+* Thu May 10 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.15.0-2
+- Rebuild with new Toxcore
+
 * Thu Apr 19 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.15.0-1
 - Upstream release 1.15.0
 
