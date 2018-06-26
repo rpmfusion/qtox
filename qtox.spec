@@ -1,6 +1,6 @@
 Name:       qtox
 Version:    1.15.0
-Release:    2%{?dist}
+Release:    3%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -87,6 +87,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/qTox.appd
 
 
 %changelog
+* Tue Jun 26 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.15.0-3
+- Rebuilt for toxcore soname bump
+
 * Thu May 10 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.15.0-2
 - Rebuild with new Toxcore
 
