@@ -1,6 +1,6 @@
 Name:       qtox
-Version:    1.15.0
-Release:    3%{?dist}
+Version:    1.16.0
+Release:    1%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -12,7 +12,7 @@ URL:        https://github.com/qTox/qTox/
 Source0:    %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 # Remove project_group tag from appdata.xml
-Patch0:     qtox-1.11.0-remove_project_group.patch
+Patch0:     qtox-1.16.0-remove_project_group.patch
 # Remove -Werror from compile flags
 Patch1:     qtox-1.12.1-disable_Werror.patch
 
@@ -73,20 +73,23 @@ gzip -dS z %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/qtox.svgz
 %check
 cd build
 ctest -V %{?_smp_mflags}
-desktop-file-validate %{buildroot}%{_datadir}/applications/qtox.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/qTox.appdata.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.qtox.qTox.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github.qtox.qTox.appdata.xml
 
 
 %files
 %license LICENSE smileys/Universe/LICENSE-GRAPHICS
 %doc README.md CHANGELOG.md
 %{_bindir}/qtox
-%{_datadir}/metainfo/qTox.appdata.xml
-%{_datadir}/applications/qtox.desktop
+%{_datadir}/metainfo/io.github.qtox.qTox.appdata.xml
+%{_datadir}/applications/io.github.qtox.qTox.desktop
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 
 %changelog
+* Tue Jul 03 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.16.0-1
+- Upstream release 1.16.0
+
 * Tue Jun 26 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.15.0-3
 - Rebuilt for toxcore soname bump
 
