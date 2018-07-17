@@ -1,5 +1,5 @@
 Name:       qtox
-Version:    1.16.0
+Version:    1.16.2
 Release:    1%{?dist}
 Summary:    Feature-rich Tox client
 
@@ -87,6 +87,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 
 
 %changelog
+* Tue Jul 17 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.16.2-1
+- Upstream release 1.16.2
+
 * Tue Jul 03 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.16.0-1
 - Upstream release 1.16.0
 
