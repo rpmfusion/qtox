@@ -1,6 +1,6 @@
 Name:       qtox
 Version:    1.16.2
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -87,6 +87,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 
 
 %changelog
+* Fri Jul 27 2018 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.16.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Tue Jul 17 2018 Robert-André Mauchin <zebob.m@gmail.com> - 1.16.2-1
 - Upstream release 1.16.2
 
