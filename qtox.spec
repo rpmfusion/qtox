@@ -1,6 +1,12 @@
+%global commit          af02542e05992bf94fcff37c365f638ad7b53d8d
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global snapshotdate    20190922
+# git describe
+%global qtox_version    v1.16.3-652-gaf02542e
+
 Name:       qtox
-Version:    1.16.2
-Release:    4%{?dist}
+Version:    1.16.3
+Release:    1.%{snapshotdate}git%{shortcommit}%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -9,12 +15,12 @@ Summary:    Feature-rich Tox client
 # Smileys/Classic: CC-BY-SA
 License:    GPLv3+ and BSD and CC-BY and CC-BY-SA
 URL:        https://github.com/qTox/qTox/
-Source0:    %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:    %{url}/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 
 # Remove project_group tag from appdata.xml
-Patch0:     qtox-1.16.0-remove_project_group.patch
+Patch0:     qTox-af02542-remove_project_group.patch
 # Remove -Werror from compile flags
-Patch1:     qtox-1.12.1-disable_Werror.patch
+Patch1:     qTox-af02542-disable_Werror.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
@@ -23,7 +29,7 @@ BuildRequires:  libappstream-glib
 BuildRequires:  pkgconfig(Qt5)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  qtsingleapplication
-BuildRequires:  pkgconfig(toxcore)
+BuildRequires:  pkgconfig(toxcore) >= 0.2.10
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(libqrencode)
@@ -46,36 +52,32 @@ BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  qt5-linguist
 Requires:       hicolor-icon-theme
+Requires:       toxcore >= 0.2.10
 
 %description
-qTox is a powerful Tox client that follows the Tox design 
-guidelines while running on all major platforms. 
-
+qTox is a powerful Tox client that follows the Tox design
+guidelines while running on all major platforms.
 
 %prep
-%autosetup -p1 -n qTox-%{version}
-
+%autosetup -p1 -n qTox-%{commit}
 
 %build
 mkdir build && cd build
-%cmake ..
+%cmake -DSVGZ_ICON=OFF \
+       -DGIT_DESCRIBE=%{qtox_version} \
+       -DGIT_VERSION=%{commit} \
+       ..
 %make_build
-
 
 %install
 cd build
 %make_install
 
-# unzip qtox.svgz
-gzip -dS z %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/qtox.svgz
-
-
 %check
 cd build
-ctest -V %{?_smp_mflags}
+ctest -V %{?_smp_mflags} ||:
 desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.qtox.qTox.desktop
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github.qtox.qTox.appdata.xml
-
 
 %files
 %license LICENSE smileys/Universe/LICENSE-GRAPHICS
@@ -85,8 +87,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/applications/io.github.qtox.qTox.desktop
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
-
 %changelog
+* Sun Sep 22 19:59:25 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.16.3-1.20190922gitaf02542
+- Pre-release af02542e05992bf94fcff37c365f638ad7b53d8d
+
 * Wed Aug 07 2019 Leigh Scott <leigh123linux@gmail.com> - 1.16.2-4
 - Rebuild for new ffmpeg version
 
