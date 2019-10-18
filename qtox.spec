@@ -1,12 +1,12 @@
-%global commit          af02542e05992bf94fcff37c365f638ad7b53d8d
+%global commit          a44cce65beb60c5f280b651e0c084fa9c2bdb0dc
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
-%global snapshotdate    20190922
+%global snapshotdate    20191018
 # git describe
-%global qtox_version    v1.16.3-652-gaf02542e
+%global qtox_version    v1.16.3-704-gedb6af6f
 
 Name:       qtox
 Version:    1.16.3
-Release:    1.%{snapshotdate}git%{shortcommit}%{?dist}
+Release:    2.%{snapshotdate}git%{shortcommit}%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -28,7 +28,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
 BuildRequires:  pkgconfig(Qt5)
 BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  qtsingleapplication
+BuildRequires:  kf5-sonnet-devel
+BuildRequires:  qtsingleapplication-qt5-devel
 BuildRequires:  pkgconfig(toxcore) >= 0.2.10
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(openal)
@@ -39,17 +40,10 @@ BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(atk)
-BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(vpx)
-BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  qt5-linguist
 Requires:       hicolor-icon-theme
 Requires:       toxcore >= 0.2.10
@@ -88,6 +82,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Fri Oct 18 17:59:35 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.16.3-2.20191018gita44cce6
+- Pre-release a44cce65beb60c5f280b651e0c084fa9c2bdb0dc
+- Update BuildRequires
+
 * Sun Sep 22 19:59:25 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.16.3-1.20190922gitaf02542
 - Pre-release af02542e05992bf94fcff37c365f638ad7b53d8d
 
