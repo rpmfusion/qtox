@@ -6,7 +6,7 @@
 
 Name:       qtox
 Version:    1.16.3
-Release:    2.%{snapshotdate}git%{shortcommit}%{?dist}
+Release:    3.%{snapshotdate}git%{shortcommit}%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -82,6 +82,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Wed Feb 05 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.16.3-3.20191018gita44cce6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Fri Oct 18 17:59:35 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.16.3-2.20191018gita44cce6
 - Pre-release a44cce65beb60c5f280b651e0c084fa9c2bdb0dc
 - Update BuildRequires
