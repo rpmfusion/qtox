@@ -4,6 +4,8 @@
 # git describe
 %global qtox_version    v1.16.3-704-gedb6af6f
 
+%undefine __cmake_in_source_build
+
 Name:       qtox
 Version:    1.16.3
 Release:    5.%{snapshotdate}git%{shortcommit}%{?dist}
@@ -23,7 +25,7 @@ Patch0:     qTox-af02542-remove_project_group.patch
 Patch1:     qTox-af02542-disable_Werror.patch
 
 BuildRequires:  gcc-c++
-BuildRequires:  cmake
+BuildRequires:  cmake3
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
 BuildRequires:  pkgconfig(Qt5)
@@ -56,19 +58,16 @@ guidelines while running on all major platforms.
 %autosetup -p1 -n qTox-%{commit}
 
 %build
-mkdir build && cd build
-%cmake -DSVGZ_ICON=OFF \
+%cmake3 -DSVGZ_ICON=OFF \
        -DGIT_DESCRIBE=%{qtox_version} \
-       -DGIT_VERSION=%{commit} \
-       ..
-%make_build
+       -DGIT_VERSION=%{commit}
+%cmake3_build
 
 %install
-cd build
-%make_install
+%cmake3_install
 
 %check
-cd build
+cd %{_vpath_builddir}
 ctest -V %{?_smp_mflags} ||:
 desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.qtox.qTox.desktop
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github.qtox.qTox.appdata.xml
