@@ -1,14 +1,15 @@
-%global commit          a44cce65beb60c5f280b651e0c084fa9c2bdb0dc
+%global commit          c0e9a3b79609681e5b9f6bbf8f9a36cb1993dc5f
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
-%global snapshotdate    20191018
+%global snapshotdate    20191205
+# %%global prerelease    1
 # git describe
-%global qtox_version    v1.16.3-704-gedb6af6f
+%global qtox_version    v1.17.3-316-g12fc33ee
 
 %undefine __cmake_in_source_build
 
 Name:       qtox
-Version:    1.16.3
-Release:    5.%{snapshotdate}git%{shortcommit}%{?dist}
+Version:    1.17.3
+Release:    1%{?prerelease:.%{snapshotdate}git%{shortcommit}}%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -20,9 +21,7 @@ URL:        https://github.com/qTox/qTox/
 Source0:    %{url}/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 
 # Remove project_group tag from appdata.xml
-Patch0:     qTox-af02542-remove_project_group.patch
-# Remove -Werror from compile flags
-Patch1:     qTox-af02542-disable_Werror.patch
+Patch0:     qTox-c0e9a3b-remove_project_group.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake3
@@ -59,8 +58,8 @@ guidelines while running on all major platforms.
 
 %build
 %cmake3 -DSVGZ_ICON=OFF \
-       -DGIT_DESCRIBE=%{qtox_version} \
-       -DGIT_VERSION=%{commit}
+        -DGIT_DESCRIBE=%{qtox_version} \
+        -DGIT_VERSION=%{commit}
 %cmake3_build
 
 %install
@@ -81,6 +80,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Sat Dec 05 22:19:55 CET 2020 Robert-André Mauchin <zebob.m@gmail.com> - 1.17.3-1
+- Update to 1.17.3
+
 * Tue Aug 18 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.16.3-5.20191018gita44cce6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 

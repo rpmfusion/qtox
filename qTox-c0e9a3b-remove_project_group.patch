@@ -1,0 +1,11 @@
+diff -up qTox-c0e9a3b79609681e5b9f6bbf8f9a36cb1993dc5f/res/io.github.qtox.qTox.appdata.xml.orig qTox-c0e9a3b79609681e5b9f6bbf8f9a36cb1993dc5f/res/io.github.qtox.qTox.appdata.xml
+--- qTox-c0e9a3b79609681e5b9f6bbf8f9a36cb1993dc5f/res/io.github.qtox.qTox.appdata.xml.orig	2020-12-05 22:34:17.689682779 +0100
++++ qTox-c0e9a3b79609681e5b9f6bbf8f9a36cb1993dc5f/res/io.github.qtox.qTox.appdata.xml	2020-12-05 22:35:02.244903395 +0100
+@@ -62,7 +62,6 @@
+  </screenshots>
+  <url type="homepage">https://qtox.github.io</url>
+  <update_contact>barrdetwix@gmail.com</update_contact>
+- <project_group>qTox</project_group>
+    <content_rating type="oars-1.0">
+     <content_attribute id="social-chat">intense</content_attribute>
+     <content_attribute id="social-audio">intense</content_attribute>
