@@ -9,7 +9,7 @@
 
 Name:       qtox
 Version:    1.17.3
-Release:    1%{?prerelease:.%{snapshotdate}git%{shortcommit}}%{?dist}
+Release:    2%{?prerelease:.%{snapshotdate}git%{shortcommit}}%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -80,6 +80,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Fri Jan  1 2021 Leigh Scott <leigh123linux@gmail.com> - 1.17.3-2
+- Rebuilt for new ffmpeg snapshot
+
 * Sat Dec 05 22:19:55 CET 2020 Robert-André Mauchin <zebob.m@gmail.com> - 1.17.3-1
 - Update to 1.17.3
 
