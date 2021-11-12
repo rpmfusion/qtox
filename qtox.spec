@@ -9,7 +9,7 @@
 
 Name:       qtox
 Version:    1.17.3
-Release:    4%{?prerelease:.%{snapshotdate}git%{shortcommit}}%{?dist}
+Release:    5%{?prerelease:.%{snapshotdate}git%{shortcommit}}%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -80,6 +80,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Fri Nov 12 2021 Leigh Scott <leigh123linux@gmail.com> - 1.17.3-5
+- Rebuilt for new ffmpeg snapshot
+
 * Tue Aug 03 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.17.3-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
