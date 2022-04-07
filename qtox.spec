@@ -1,15 +1,6 @@
-%global commit          c0e9a3b79609681e5b9f6bbf8f9a36cb1993dc5f
-%global shortcommit     %(c=%{commit}; echo ${c:0:7})
-%global snapshotdate    20191205
-# %%global prerelease    1
-# git describe
-%global qtox_version    v1.17.3-316-g12fc33ee
-
-%undefine __cmake_in_source_build
-
 Name:       qtox
-Version:    1.17.3
-Release:    6%{?prerelease:.%{snapshotdate}git%{shortcommit}}%{?dist}
+Version:    1.17.6
+Release:    1%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -18,13 +9,13 @@ Summary:    Feature-rich Tox client
 # Smileys/Classic: CC-BY-SA
 License:    GPLv3+ and BSD and CC-BY and CC-BY-SA
 URL:        https://github.com/qTox/qTox/
-Source0:    %{url}/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
+Source0:    %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 # Remove project_group tag from appdata.xml
 Patch0:     qTox-c0e9a3b-remove_project_group.patch
 
 BuildRequires:  gcc-c++
-BuildRequires:  cmake3
+BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
 BuildRequires:  pkgconfig(Qt5)
@@ -32,7 +23,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  kf5-sonnet-devel
 BuildRequires:  qtsingleapplication-qt5-devel
 BuildRequires:  pkgconfig(toxcore) >= 0.2.10
-BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  ffmpeg-devel
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(sqlcipher)
@@ -48,22 +39,21 @@ BuildRequires:  pkgconfig(vpx)
 BuildRequires:  qt5-linguist
 Requires:       hicolor-icon-theme
 Requires:       toxcore >= 0.2.10
+Requires:       ffmpeg-libs
 
 %description
 qTox is a powerful Tox client that follows the Tox design
 guidelines while running on all major platforms.
 
 %prep
-%autosetup -p1 -n qTox-%{commit}
+%autosetup -p1 -n qTox-%{version}
 
 %build
-%cmake3 -DSVGZ_ICON=OFF \
-        -DGIT_DESCRIBE=%{qtox_version} \
-        -DGIT_VERSION=%{commit}
-%cmake3_build
+%cmake -DSVGZ_ICON=OFF \
+%cmake_build
 
 %install
-%cmake3_install
+%cmake_install
 
 %check
 cd %{_vpath_builddir}
@@ -80,6 +70,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Thu Apr 07 2022 Leigh Scott <leigh123linux@gmail.com> - 1.17.6-1
+- Update to 1.17.6
+
 * Wed Feb 09 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 1.17.3-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
