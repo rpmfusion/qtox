@@ -1,6 +1,6 @@
 Name:       qtox
 Version:    1.17.6
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -49,7 +49,10 @@ guidelines while running on all major platforms.
 %autosetup -p1 -n qTox-%{version}
 
 %build
-%cmake -DSVGZ_ICON=OFF \
+%cmake \
+ -DSVGZ_ICON=OFF \
+ -DUPDATE_CHECK=OFF \
+ -DGIT_DESCRIBE=%{version}
 %cmake_build
 
 %install
@@ -70,6 +73,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Tue May 17 2022 Leigh Scott <leigh123linux@gmail.com> - 1.17.6-2
+- Fix crash (rfbz#6301)
+
 * Thu Apr 07 2022 Leigh Scott <leigh123linux@gmail.com> - 1.17.6-1
 - Update to 1.17.6
 
