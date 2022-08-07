@@ -1,6 +1,6 @@
 Name:       qtox
 Version:    1.17.6
-Release:    2%{?dist}
+Release:    3%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -73,6 +73,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Sun Aug 07 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 1.17.6-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
+  5.1
+
 * Tue May 17 2022 Leigh Scott <leigh123linux@gmail.com> - 1.17.6-2
 - Fix crash (rfbz#6301)
 
