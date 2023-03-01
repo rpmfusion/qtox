@@ -1,6 +1,6 @@
 Name:       qtox
 Version:    1.17.6
-Release:    4%{?dist}
+Release:    5%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -73,6 +73,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Wed Mar 01 2023 Leigh Scott <leigh123linux@gmail.com> - 1.17.6-5
+- Rebuild for new ffmpeg
+
 * Wed Feb 08 2023 Leigh Scott <leigh123linux@gmail.com> - 1.17.6-4
 - rebuilt
 
