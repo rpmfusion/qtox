@@ -13,6 +13,7 @@ Source0:    %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 # Remove project_group tag from appdata.xml
 Patch0:     qTox-c0e9a3b-remove_project_group.patch
+Patch1:     qTox-1.17.6-ffmpeg7.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
@@ -75,6 +76,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %changelog
 * Wed Nov 06 2024 Sérgio Basto <sergio@serjux.com> - 1.17.6-9
 - Rebuild for ffmpeg-7
+- Add qTox-1.17.6-ffmpeg7.patch (Mamoru TASAKA) from rfbz #7096
 
 * Fri Aug 02 2024 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 1.17.6-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
