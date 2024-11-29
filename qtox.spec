@@ -74,6 +74,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Thu Nov 28 2024 Nikolay 168 <nick975@rpmfusion.org> - 1.17.7-1
+- Rebuild for new version
+- Stability fixes
+
 * Wed Nov 06 2024 Sérgio Basto <sergio@serjux.com> - 1.17.6-9
 - Rebuild for ffmpeg-7
 - Add qTox-1.17.6-ffmpeg7.patch (Mamoru TASAKA) from rfbz #7096
