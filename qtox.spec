@@ -1,6 +1,6 @@
 Name:       qtox
-Version:    1.17.8
-Release:    10%{?dist}
+Version:    1.18.3
+Release:    1%{?dist}
 Summary:    Feature-rich Tox client
 
 # Main program: GPLv3+
@@ -8,20 +8,18 @@ Summary:    Feature-rich Tox client
 # Smileys/Universe Smileys/emojione: CC-BY
 # Smileys/Classic: CC-BY-SA
 License:    GPLv3+ and BSD and CC-BY and CC-BY-SA
-URL:        https://github.com/nickolay168/qTox
+URL:        https://github.com/TokTok/qTox/
 Source0:    %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-
-# Remove project_group tag from appdata.xml
-Patch0:     qTox-c0e9a3b-remove_project_group.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
-BuildRequires:  pkgconfig(Qt5)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  kf5-sonnet-devel
-BuildRequires:  qtsingleapplication-qt5-devel
+BuildRequires:  cmake(Qt6)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(KF6Sonnet)
+BuildRequires:  qtsingleapplication-qt6-devel
 BuildRequires:  pkgconfig(toxcore) >= 0.2.10
 BuildRequires:  ffmpeg-devel
 BuildRequires:  pkgconfig(openal)
@@ -36,7 +34,6 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(vpx)
-BuildRequires:  qt5-linguist
 Requires:       hicolor-icon-theme
 Requires:       toxcore >= 0.2.10
 Requires:       ffmpeg-libs
@@ -73,6 +70,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Sun Mar 23 2025 Sérgio Basto <sergio@serjux.com> - 1.18.3-1
+- Update qtox to 1.18.3
+
 * Tue Jan 28 2025 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 1.17.8-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
 
