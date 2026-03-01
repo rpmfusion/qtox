@@ -1,5 +1,5 @@
 Name:       qtox
-Version:    1.18.3
+Version:    1.18.4
 Release:    1%{?dist}
 Summary:    Feature-rich Tox client
 
@@ -70,6 +70,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Fri Feb 27 2026 Nikolay 168 <nick975@rpmfusion.org> - 1.18.4-1
+- Update qtox to 1.18.4
+
 * Sun Mar 23 2025 Sérgio Basto <sergio@serjux.com> - 1.18.3-1
 - Update qtox to 1.18.3
 
