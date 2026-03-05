@@ -1,5 +1,5 @@
 Name:       qtox
-Version:    1.18.3
+Version:    1.18.4
 Release:    2%{?dist}
 Summary:    Feature-rich Tox client
 
@@ -70,6 +70,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.github
 %{_datadir}/icons/hicolor/*/apps/qtox.*
 
 %changelog
+* Wed Mar 04 2026 Nikolay 168 <nick974@rpmfusion.org> - 1.18.4-1
+- Update qtox to 1.18.4
+
 * Sun Jul 27 2025 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 1.18.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
 
